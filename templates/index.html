@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>sᴀɪᴛᴏxғғɪɴғᴏ</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/static/css/style.css"/>
+</head>
+<body>
+
+<!-- HACKING CANVAS BACKGROUND -->
+<canvas id="hackCanvas"></canvas>
+
+<!-- WELCOME BANNER -->
+<div id="welcomeBanner">
+  <div class="banner-inner">
+    <div class="banner-logo">⚡</div>
+    <h1 class="banner-title">ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ</h1>
+    <h1 class="banner-brand">sᴀɪᴛᴏxғғɪɴғᴏ</h1>
+    <h2 class="banner-sub">ᴡᴇʙsɪᴛᴇ</h2>
+    <div class="banner-line"></div>
+    <p class="banner-tagline">ғʀᴇᴇ ғɪʀᴇ ᴘʟᴀʏᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ sʏsᴛᴇᴍ</p>
+    <button class="banner-btn" onclick="closeBanner()">ENTER SITE &nbsp;▶</button>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="mainSite" style="display:none;">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">sᴀɪᴛᴏ<span class="logo-accent">xғғ</span>ɪɴғᴏ</span>
+      </div>
+      <div class="header-right">
+        <!-- COLOR PICKER -->
+        <div class="color-picker-wrap">
+          <span class="color-label">ᴄᴏʟᴏʀ</span>
+          <div class="color-swatches">
+            <button class="swatch active" data-color="#00ffff" style="background:#00ffff;" title="Cyan" onclick="setThemeColor('#00ffff',this)"></button>
+            <button class="swatch" data-color="#ff6b00" style="background:#ff6b00;" title="Orange" onclick="setThemeColor('#ff6b00',this)"></button>
+            <button class="swatch" data-color="#00ff87" style="background:#00ff87;" title="Green" onclick="setThemeColor('#00ff87',this)"></button>
+            <button class="swatch" data-color="#a855f7" style="background:#a855f7;" title="Purple" onclick="setThemeColor('#a855f7',this)"></button>
+            <button class="swatch" data-color="#ffd700" style="background:#ffd700;" title="Gold" onclick="setThemeColor('#ffd700',this)"></button>
+            <button class="swatch" data-color="#ff4fa3" style="background:#ff4fa3;" title="Pink" onclick="setThemeColor('#ff4fa3',this)"></button>
+          </div>
+        </div>
+        <div class="header-badge">ғғ ɪɴғᴏ ᴛᴏᴏʟ</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SEARCH SECTION -->
+  <section class="search-section">
+    <div class="search-card">
+      <h2 class="search-title">🔍 ᴘʟᴀʏᴇʀ ɪɴғᴏ sᴇᴀʀᴄʜ</h2>
+      <p class="search-sub">ᴇɴᴛᴇʀ ғʀᴇᴇ ғɪʀᴇ ᴜɪᴅ ᴛᴏ ɢᴇᴛ ғᴜʟʟ ᴘʟᴀʏᴇʀ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</p>
+      <div class="search-row">
+        <input type="text" id="uidInput" placeholder="Enter Free Fire UID..." maxlength="20"/>
+        <select id="regionSelect">
+          <option value="">ᴀᴜᴛᴏ ʀᴇɢɪᴏɴ</option>
+          <option value="ME">ᴍᴇ (ᴍɪᴅᴅʟᴇ ᴇᴀsᴛ)</option>
+          <option value="BD">ʙᴅ (ʙᴀɴɢʟᴀᴅᴇsʜ)</option>
+          <option value="IND">ɪɴᴅ (ɪɴᴅɪᴀ)</option>
+          <option value="SG">sɢ (sɪɴɢᴀᴘᴏʀᴇ)</option>
+          <option value="ID">ɪᴅ (ɪɴᴅᴏɴᴇsɪᴀ)</option>
+          <option value="TH">ᴛʜ (ᴛʜᴀɪʟᴀɴᴅ)</option>
+          <option value="VN">ᴠɴ (ᴠɪᴇᴛɴᴀᴍ)</option>
+          <option value="PK">ᴘᴋ (ᴘᴀᴋɪsᴛᴀɴ)</option>
+          <option value="BR">ʙʀ (ʙʀᴀᴢɪʟ)</option>
+          <option value="US">ᴜs (ᴜsᴀ)</option>
+          <option value="EU">ᴇᴜ (ᴇᴜʀᴏᴘᴇ)</option>
+        </select>
+        <button id="searchBtn" onclick="searchPlayer()">
+          <span id="btnText">sᴇᴀʀᴄʜ</span>
+          <span id="btnLoader" class="loader" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT SECTION -->
+  <section id="resultSection" style="display:none;">
+    <div class="result-wrap">
+
+      <!-- PLAYER HEADER CARD -->
+      <div class="player-header-card">
+        <div class="player-avatar-wrap">
+          <img id="playerAvatar" src="" alt="Avatar" class="player-avatar"
+               onerror="this.src='https://cdn.jsdelivr.net/gh/ShahGCreator/icon@main/PNG/902001.png'"/>
+        </div>
+        <div class="player-header-info">
+          <h2 id="playerName" class="player-name">—</h2>
+          <div class="player-tags">
+            <span class="tag tag-region" id="tagRegion">—</span>
+            <span class="tag tag-level"  id="tagLevel">ʟᴠ —</span>
+            <span class="tag tag-guild"  id="tagGuild">ɴᴏ ɢᴜɪʟᴅ</span>
+          </div>
+          <div class="player-stats-mini">
+            <div class="stat-mini"><span class="stat-mini-val" id="statLikes">—</span><span class="stat-mini-lbl">Likes</span></div>
+            <div class="stat-mini"><span class="stat-mini-val" id="statEXP">—</span><span class="stat-mini-lbl">ᴇxᴘ</span></div>
+            <div class="stat-mini"><span class="stat-mini-val" id="statBPBadge">—</span><span class="stat-mini-lbl">ʙᴘ ʙᴀᴅɢᴇ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFO ROWS (horizontal like profile) -->
+      <div class="wide-card">
+        <div class="card-header"><span class="card-icon">👤</span> ᴀᴄᴄᴏᴜɴᴛ ɪɴғᴏ</div>
+        <div class="info-row-list" id="accountInfoList"></div>
+      </div>
+
+      <div class="wide-card">
+        <div class="card-header"><span class="card-icon">🏰</span> ɢᴜɪʟᴅ ɪɴғᴏ</div>
+        <div class="info-row-list" id="guildInfoList"></div>
+      </div>
+
+      <div class="wide-card">
+        <div class="card-header"><span class="card-icon">🏆</span> ʀᴀɴᴋ ɪɴғᴏ</div>
+        <div class="info-row-list" id="rankInfoList"></div>
+      </div>
+
+      <div class="wide-card">
+        <div class="card-header"><span class="card-icon">🐾</span> Pet Info</div>
+        <div class="info-row-list" id="petInfoList"></div>
+      </div>
+
+      <!-- EQUIPPED OUTFIT -->
+      <div class="wide-card">
+        <div class="card-header"><span>👗</span> ᴇǫᴜɪᴘᴘᴇᴅ ᴏᴜᴛғɪᴛ</div>
+        <div class="equipped-grid" id="outfitGrid"></div>
+      </div>
+
+      <!-- EQUIPPED WEAPONS -->
+      <div class="wide-card">
+        <div class="card-header"><span>🔫</span> ᴇǫᴜɪᴘᴘᴇᴅ ᴡᴇᴀᴘᴏɴ sᴋɪɴs</div>
+        <div class="equipped-grid" id="weaponGrid"></div>
+      </div>
+
+      <!-- EQUIPPED SKILLS — plain text list -->
+      <div class="wide-card">
+        <div class="card-header"><span>⚡</span> ᴇǫᴜɪᴘᴘᴇᴅ sᴋɪʟʟs</div>
+        <div class="skill-list" id="skillList"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ERROR BOX -->
+  <div id="errorBox" class="error-box" style="display:none;">
+    <span>❌</span> <span id="errorMsg">sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ.</span>
+  </div>
+
+  <!-- HOW TO USE BUTTON -->
+  <div class="how-btn-wrap">
+    <button class="how-btn" onclick="toggleGuide()">📖 ʜᴏᴡ ᴛᴏ ᴜsᴇ / কিভাবে ব্যবহার করবেন</button>
+  </div>
+
+  <!-- HOW TO USE GUIDE -->
+  <div id="guideBox" class="guide-box" style="display:none;">
+    <div class="guide-inner">
+      <button class="guide-close" onclick="toggleGuide()">✕</button>
+      <h3 class="guide-title">📖 ʜᴏᴡ ᴛᴏ ᴜsᴇ / কিভাবে ব্যবহার করবেন</h3>
+      <div class="guide-lang">
+        <div class="guide-block">
+          <h4>🇬🇧 ᴇɴɢʟɪsʜ ɢᴜɪᴅᴇ</h4>
+          <ol>
+            <li>ᴏᴘᴇɴ ʏᴏᴜʀ <strong>ғʀᴇᴇ ғɪʀᴇ</strong> ɢᴀᴍᴇ.</li>
+            <li>ɢᴏ ᴛᴏ ʏᴏᴜʀ <strong>ᴘʀᴏғɪʟᴇ</strong> → ᴄᴏᴘʏ ʏᴏᴜʀ <strong>ᴜɪᴅ</strong>.</li>
+            <li><strong>ᴘᴀsᴛᴇ ᴛʜᴇ ᴜɪᴅ</strong> ɪɴ ᴛʜᴇ sᴇᴀʀᴄʜ ʙᴏx ᴀʙᴏᴠᴇ.</li>
+            <li>sᴇʟᴇᴄᴛ ʏᴏᴜʀ <strong>ʀᴇɢɪᴏɴ</strong> ᴏʀ ʟᴇᴀᴠᴇ ᴀᴜᴛᴏ.</li>
+            <li>ᴄʟɪᴄᴋ <strong>sᴇᴀʀᴄʜ</strong> ʙᴜᴛᴛᴏɴ.</li>
+            <li>ғᴜʟʟ ᴘʟᴀʏᴇʀ ɪɴғᴏ ᴀᴘᴘᴇᴀʀs — ᴏᴜᴛғɪᴛ, ᴡᴇᴀᴘᴏɴ sᴋɪɴs, sᴋɪʟʟs & ᴍᴏʀᴇ.</li>
+          </ol>
+        </div>
+        <div class="guide-block">
+          <h4>🇧🇩 বাংলা গাইড</h4>
+          <ol>
+            <li>আপনার <strong>ғʀᴇᴇ ғɪʀᴇ</strong> গেম খুলুন।</li>
+            <li><strong>প্রোফাইলে</strong> যান → <strong>UID</strong> কপি করুন।</li>
+            <li>সার্চ বক্সে <strong>UID পেস্ট</strong> করুন।</li>
+            <li><strong>রিজিয়ন সিলেক্ট</strong> করুন অথবা Auto রাখুন।</li>
+            <li><strong>sᴇᴀʀᴄʜ</strong> বাটনে ক্লিক করুন।</li>
+            <li>সম্পূর্ণ প্লেয়ার ইনফো দেখা যাবে।</li>
+          </ol>
+        </div>
+      </div>
+      <div class="guide-note">
+        <strong>⚠️ ɴᴏᴛᴇ / নোট:</strong> This tool only shows <em>public</em> profile info. No private data accessed. / শুধু পাবলিক তথ্য দেখায়।
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>⚡ sᴀɪᴛᴏxғғɪɴғᴏ &copy; 2024 &nbsp;|&nbsp; ғʀᴇᴇ ғɪʀᴇ ᴘʟᴀʏᴇʀ ɪɴғᴏ ᴛᴏᴏʟ &nbsp;|&nbsp; ᴍᴀᴅᴇ ᴡɪᴛʜ: sᴀɪᴛᴏ ❤️</p>
+  </footer>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
